@@ -6,24 +6,142 @@ input {
   }
 
   .bg-img-doctor{
-    padding-top: 5rem;
-    background:url('../../images/Medical\ prescription-amico.svg');
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-xl) 0;
+    background: url('../../images/Medical\ prescription-amico.svg');
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
-    backdrop-filter:initial;
-    margin-top: 7rem;
+    position: relative;
+  }
+
+  .bg-img-doctor::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgba(49, 27, 146, 0.7), rgba(126, 87, 194, 0.4));
+    z-index: 1;
+  }
+
+  .bg-img-doctor > * {
+    position: relative;
+    z-index: 2;
   }
 
   .signin-signup {
-    background-color: var(--blue);
-    border-radius: 3rem;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    z-index: 5;
-    padding:1.5rem;
-    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-light) 100%);
+    position: relative;
+    overflow: hidden;
   }
-  
+
+  .signin-signup::before,
+  .signin-signup::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, var(--accent1), var(--accent2));
+    opacity: 0.5;
+    filter: blur(60px);
+  }
+
+  .signin-signup::before {
+    top: -100px;
+    right: -100px;
+    animation: floatingBubbles 8s ease-in-out infinite;
+  }
+
+  .signin-signup::after {
+    bottom: -100px;
+    left: -100px;
+    animation: floatingBubbles 8s ease-in-out infinite reverse;
+  }
+
+  @keyframes floatingBubbles {
+    0% { transform: translateY(0) scale(1); opacity: 0.5; }
+    50% { transform: translateY(-20px) scale(1.1); opacity: 0.7; }
+    100% { transform: translateY(0) scale(1); opacity: 0.5; }
+  }
+
+  .form-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+    width: 768px;
+    max-width: 100%;
+    min-height: 480px;
+    backdrop-filter: blur(10px);
+    animation: containerAppear 0.6s ease-out;
+  }
+
+  @keyframes containerAppear {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  .form-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent2), var(--accent3), var(--accent1));
+    background-size: 200% auto;
+    animation: gradientMove 3s linear infinite;
+  }
+
+  .form-container input {
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(156, 39, 176, 0.1);
+    margin: 12px 0;
+    padding: 12px 16px;
+    font-size: 14px;
+    border-radius: var(--radius-md);
+    width: 100%;
+    outline: none;
+    transition: all 0.3s ease;
+    color: var(--text-primary);
+  }
+
+  .form-container input:focus {
+    border-color: var(--primary);
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 0 4px rgba(156, 39, 176, 0.1);
+  }
+
+  .form-container input::placeholder {
+    color: var(--text-muted);
+    opacity: 0.7;
+  }
+
+  .form-container label {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--text-primary);
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+  }
+
+  .form-container .form-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-container .form-group:focus-within label {
+    color: var(--primary);
+    transform: translateY(-2px);
+  }
+
   .sign-in-form {
     display: flex;
     align-items: center;
@@ -31,32 +149,33 @@ input {
     flex-direction: column;
     overflow: hidden;
   }
-  
+
   .sign-in-form {
     z-index: 2;
   }
-  
-.login-page{
+
+  .login-page{
     display:flex;
     align-items: center;
     height:100vh;
     justify-content: space-between;
-}
-.title {  
+  }
+
+  .title {  
     background-color: var(--blue);
     color: white;
     padding:2%;
     border-radius:20px;
     margin:10px;
-}
+  }
 
-.title h1{
+  .title h1{
     font-size:5.5rem;
     text-transform:uppercase;
     font-weight: 500;
-}
-  
-.input-field {
+  }
+
+  .input-field {
     max-width: 380px;
     width: 100%;
     background-color: #f0f0f0;
@@ -67,9 +186,9 @@ input {
     grid-template-columns: 15% 85%;
     padding: 0 0.4rem;
     position: relative;
-}
-  
-.input-field i {
+  }
+
+  .input-field i {
     text-align: center;
     line-height: 55px;
     color: #acacac;

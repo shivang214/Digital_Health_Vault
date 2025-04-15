@@ -1,9 +1,149 @@
-.signup-link{
-    color: white;
+.signup-link {
+    color: var(--accent3);
+    text-decoration: none;
+    position: relative;
+    transition: all 0.3s ease;
+    font-weight: 500;
 }
 
-.signup-link:hover{
-    color:black;
+.signup-link:hover {
+    color: var(--accent1);
+    text-shadow: 0 0 10px rgba(255, 64, 129, 0.3);
+}
+
+.signup-link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background: linear-gradient(90deg, var(--accent3), var(--accent1));
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.signup-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.signup-login-form {
+    background: radial-gradient(circle at top right, var(--accent2) 0%, transparent 30%),
+                radial-gradient(circle at bottom left, var(--accent1) 0%, transparent 30%),
+                linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-light) 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-xl);
+    position: relative;
+    overflow: hidden;
+}
+
+.form-box {
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    transform: translateZ(0);
+    transition: all 0.3s ease;
+    animation: fadeIn 0.5s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.form-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
+    background-size: 200% auto;
+    animation: gradientMove 3s linear infinite;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% center; }
+    50% { background-position: 100% center; }
+    100% { background-position: 0% center; }
+}
+
+.form-box:hover {
+    transform: translateZ(0) scale(1.02);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.form-box input {
+    background: rgba(255, 255, 255, 0.8);
+    border: 2px solid rgba(156, 39, 176, 0.2);
+    border-radius: var(--radius-md);
+    padding: 1.2rem;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: var(--text-primary);
+}
+
+.form-box input::placeholder {
+    color: var(--text-muted);
+    opacity: 0.7;
+}
+
+.form-box label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+    font-weight: 500;
+    font-size: 0.9rem;
+    transform: translateY(0);
+    transition: all 0.3s ease;
+}
+
+.form-box .input-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.form-box .input-group:focus-within label {
+    transform: translateY(-5px);
+    color: var(--primary);
+}
+
+.form-box input:focus {
+    background: rgba(255, 255, 255, 1);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(156, 39, 176, 0.1);
+    outline: none;
+}
+
+.form-box input:focus {
+    background: rgba(255, 255, 255, 1);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(156, 39, 176, 0.1);
+}
+
+.signup-login-form::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: url('data:image/svg+xml,<svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M20 0L40 20L20 40L0 20L20 0Z" fill="%239C27B0" opacity="0.05"/></svg>');
+    animation: backgroundMove 20s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes backgroundMove {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-50%, -50%); }
 }
 
 .bg-img-patient{
