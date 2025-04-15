@@ -13,7 +13,7 @@ const port = process.env.PORT || 8000
 const patientRoutes = require('./routes/patient')
 const doctorRoutes = require('./routes/doctor')
 
-const URI = `mongodb+srv://admin:${process.env.DB_PASS}@cluster01.5gpna.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`
+const URI = `mongodb+srv://99rutujadeshpande:${process.env.DB_PASS}@cluster0.agj5rar.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
 
 mongoose.connect(URI)
     .then(() => {
@@ -25,7 +25,6 @@ mongoose.connect(URI)
 
 app.use(cors())
 app.use(bodyParser.json())
-
 
 app.use(patientRoutes)
 app.use(doctorRoutes)
